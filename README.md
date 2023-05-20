@@ -1,0 +1,1 @@
+# Private-school-mangement-sys
