@@ -38,7 +38,7 @@ public class PrintStaffsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Type.getItems().addAll("Current Staffs", "Old Staffs");
+        Type.getItems().addAll("Current Staffs");
     }
     @FXML
     private AnchorPane root;
