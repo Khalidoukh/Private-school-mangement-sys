@@ -137,9 +137,7 @@ public class PrintStaffsController implements Initializable {
 
                 while (rs.next()) {
 
-                    StaffTableModel staff = new StaffTableModel(rs.getInt("empNo"),rs.getString("teacherName"),rs.getString("nic"),
-                            rs.getString("dob"),rs.getString("doa"),rs.getString("gender"),rs.getString("email"),rs.getString("assumpOfDuties"),
-                            rs.getString("phone"),rs.getString("address"),rs.getString("incDate"),rs.getString("prsntGrade"));
+                    StaffTableModel staff = new StaffTableModel(rs.getInt("empNo"),rs.getString("teacherName"),rs.getString("nic"),rs.getString("gender"),rs.getString("email"), rs.getString("phone"),rs.getString("address"));
                     staffList.add(staff);
                 }
             }
@@ -151,8 +149,8 @@ public class PrintStaffsController implements Initializable {
                 while (rs.next()) {
 
                     StaffTableModel staff = new StaffTableModel(rs.getInt("empNo"),rs.getString("teacherName"),rs.getString("nic"),
-                            rs.getString("dob"),rs.getString("doa"),rs.getString("gender"),rs.getString("email"),rs.getString("assumpOfDuties"),
-                            rs.getString("phone"),rs.getString("address"),rs.getString("incDate"),rs.getString("prsntGrade"));
+                          rs.getString("gender"),rs.getString("email"),
+                            rs.getString("phone"),rs.getString("address"));
                     staffList.add(staff);
                 }
             }

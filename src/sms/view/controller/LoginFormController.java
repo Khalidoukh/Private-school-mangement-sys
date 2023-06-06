@@ -61,7 +61,6 @@ public class LoginFormController implements Initializable {
         }
         else {
 
-            if(username.startsWith("admin")){
 
                 try {
                     if (log.Login(username, password)){
@@ -85,38 +84,6 @@ public class LoginFormController implements Initializable {
                         e.printStackTrace();
                     }
 
-                }else if((username.startsWith("teacher"))) {
-
-                try {
-                    if (log.Login(username, password)){
-
-                        AnchorPane user = FXMLLoader.load(getClass().getResource(("/sms/view/fxml/PrintStudents2.fxml")));
-                        login.getChildren().setAll(user);
-
-                    } else {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Login");
-                        alert.setHeaderText(null);
-                        alert.setContentText("Invalid Username or Password..!");
-                        alert.showAndWait();
-                    }
-
-                } catch(SQLException e){
-                    e.printStackTrace();
-                } catch(ClassNotFoundException e){
-                    e.printStackTrace();
-                } catch(IOException e){
-                    e.printStackTrace();
-                }
-            }else {
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Login");
-                alert.setHeaderText(null);
-                alert.setContentText("Invalid Username or Password..!");
-                alert.showAndWait();
-
-            }
 
             }
 
