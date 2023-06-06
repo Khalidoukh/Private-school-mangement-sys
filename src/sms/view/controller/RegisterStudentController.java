@@ -28,10 +28,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-/**
- * @author chamodshehanka on 7/16/2018
- * @project School-Management-System
- **/
+
 
 public class RegisterStudentController implements Initializable {
     @FXML

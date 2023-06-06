@@ -3,10 +3,7 @@ package sms.view.controller;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/**
- * @author Safnaj on 9/1/2018
- * @project School Management System
- **/
+
 public class ValidationController {
 
     public static boolean validateEmpty(TextField txt) {

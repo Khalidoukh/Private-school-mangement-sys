@@ -43,11 +43,6 @@ public class RegisterStaffController implements Initializable {
     @FXML
     private TextField nicField;
 
-    @FXML
-    private TextField dobField;
-
-    @FXML
-    private TextField doaField;
 
     @FXML
     private JFXRadioButton genderField;
@@ -58,8 +53,6 @@ public class RegisterStaffController implements Initializable {
     @FXML
     private TextField emailField;
 
-    @FXML
-    private TextField asmOfDutyField;
 
     @FXML
     private TextField phoneField;
@@ -67,17 +60,9 @@ public class RegisterStaffController implements Initializable {
     @FXML
     private TextField addressField;
 
-    @FXML
-    private JFXButton AddStaff;
 
-    @FXML
-    private JFXButton reset;
 
-    @FXML
-    private TextField incDateField;
 
-    @FXML
-    private TextField prsntGradeField;
 
     @FXML
     private JFXButton Back;
@@ -99,25 +84,21 @@ public class RegisterStaffController implements Initializable {
 
             ValidationController v = new ValidationController();
 
-            if(v.validateEmpty(empNoField)&& v.validateEmpty(teacherNameField)&& v.validateEmpty(nicField)&& v.validateEmpty(dobField)
-                    && v.validateEmpty(doaField)&& v.validateEmpty(phoneField)&& v.validateDate(dobField)&& v.validateDate(doaField)&& v.validateDate(asmOfDutyField)
-                    && v.validateDate(incDateField)&& v.validateNIC(nicField)&& v.validatePhone(phoneField)&& v.numbersOnly(empNoField)&& v.numbersOnly(phoneField)){
+            if(v.validateEmpty(empNoField)&& v.validateEmpty(teacherNameField)&& v.validateEmpty(nicField)
+               && v.validateEmpty(phoneField)
+                    && v.validateNIC(nicField)&& v.validatePhone(phoneField)&& v.numbersOnly(empNoField)&& v.numbersOnly(phoneField)){
 
                 int empNo = Integer.parseInt(empNoField.getText());
                 String teacherName = teacherNameField.getText();
                 String nic = nicField.getText();
-                String dob = dobField.getText();
-                String doa = doaField.getText();
+
                 RadioButton selectedRadioButton = (RadioButton) g.getSelectedToggle();
                 String gender = selectedRadioButton.getText();
                 String email = emailField.getText();
-                String assumpOfDuties = asmOfDutyField.getText();
                 String phone = phoneField.getText();
                 String address = addressField.getText();
-                String incDate = incDateField.getText();
-                String prsntGrade = prsntGradeField.getText();
 
-                Staff s = new Staff(empNo, teacherName, nic, dob, doa, gender, email, assumpOfDuties, phone, address, incDate, prsntGrade);
+                Staff s = new Staff(empNo, teacherName, nic, gender, email, phone, address);
                 int i = StaffController.AddStaff(s);
 
 
@@ -131,15 +112,12 @@ public class RegisterStaffController implements Initializable {
                     empNoField.setText(null);
                     teacherNameField.setText(null);
                     nicField.setText(null);
-                    dobField.setText(null);
-                    doaField.setText(null);
                     emailField.setText(null);
-                    asmOfDutyField.setText(null);
+
                     nicField.setText(null);
                     phoneField.setText(null);
                     addressField.setText(null);
-                    incDateField.setText(null);
-                    prsntGradeField.setText(null);
+
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -164,15 +142,12 @@ public class RegisterStaffController implements Initializable {
         empNoField.setText(null);
         teacherNameField.setText(null);
         nicField.setText(null);
-        dobField.setText(null);
-        doaField.setText(null);
+
         emailField.setText(null);
-        asmOfDutyField.setText(null);
         nicField.setText(null);
         addressField.setText(null);
         phoneField.setText(null);
-        incDateField.setText(null);
-        prsntGradeField.setText(null);
+
 
     }
 }
