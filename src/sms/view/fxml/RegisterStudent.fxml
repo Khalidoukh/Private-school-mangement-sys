@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms.view.controller.RegisterStudentController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms.view.controller.RegisterStudentController">
     <children>
-        <Label layoutX="40.0" layoutY="126.0" prefHeight="23.0" prefWidth="138.0" text="Admission Number :" />
+        <Label layoutX="40.0" layoutY="126.0" prefHeight="23.0" prefWidth="138.0" text="ID :" />
         <TextField fx:id="adNoField" layoutX="178.0" layoutY="125.0" prefHeight="25.0" prefWidth="242.0" promptText="Admission Number *" />
         <Label layoutX="40.0" layoutY="171.0" prefHeight="23.0" prefWidth="138.0" text="Full Name :" />
         <TextField fx:id="fullNameField" layoutX="178.0" layoutY="170.0" prefHeight="25.0" prefWidth="242.0" promptText="Full Name " />
@@ -42,27 +42,27 @@
         <TextField fx:id="phoneField" layoutX="624.0" layoutY="217.0" prefHeight="25.0" prefWidth="242.0" promptText="Contact Number *" />
         <Label layoutX="486.0" layoutY="266.0" prefHeight="23.0" prefWidth="138.0" text="Address :" />
         <TextField fx:id="addressField" layoutX="624.0" layoutY="265.0" prefHeight="25.0" prefWidth="242.0" promptText="Address : " />
-        <JFXButton fx:id="AddStudent" layoutX="485.0" layoutY="517.0" onAction="#AddStudent" text="REGISTER" textFill="WHITE">
+        <JFXButton fx:id="AddStudent" buttonType="RAISED" layoutX="485.0" layoutY="517.0" onAction="#AddStudent" style="-fx-background-color: #4F709C; -fx-padding: 10;" text="REGISTER" textFill="WHITE">
             <font>
-                <Font size="25.0" />
+                <Font name="Georgia" size="20.0" />
             </font>
          <stylesheets>
             <URL value="@css/RegStudent.css" />
          </stylesheets>
         </JFXButton>
-        <JFXButton fx:id="reset" layoutX="299.0" layoutY="517.0" onAction="#reset" prefWidth="140.0" text="RESET" textFill="WHITE">
+        <JFXButton fx:id="reset" buttonType="RAISED" layoutX="299.0" layoutY="517.0" onAction="#reset" prefWidth="140.0" style="-fx-background-color: #4F709C; -fx-padding: 10;" text="RESET" textFill="WHITE">
             <font>
-                <Font size="25.0" />
+                <Font name="Georgia" size="20.0" />
             </font>
          <stylesheets>
             <URL value="@css/RegStudent.css" />
          </stylesheets>
         </JFXButton>
-      <Pane prefHeight="94.0" prefWidth="900.0" style="-fx-background-color: #1976D2;" stylesheets="@css/RegStudent.css">
+      <Pane prefHeight="94.0" prefWidth="900.0" style="-fx-background-color: #213555;" stylesheets="@css/RegStudent.css">
          <children>
-              <Text fill="WHITE" layoutX="273.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="student registration">
+              <Text fill="WHITE" layoutX="180.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STUDENT MANAGMENT">
                   <font>
-                      <Font name="BebasNeue" size="50.0" />
+                      <Font name="Georgia" size="50.0" />
                   </font>
               </Text>
          </children>
