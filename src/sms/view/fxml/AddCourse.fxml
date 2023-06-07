@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms.view.fxml.AddCourse">
+   <children>
+      <Pane prefHeight="84.0" prefWidth="900.0" style="-fx-background-color: #213555;">
+         <children>
+            <Text fill="WHITE" layoutX="288.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD COURSE">
+               <font>
+                  <Font name="Georgia" size="50.0" />
+               </font>
+            </Text>
+            <JFXButton id="button" fx:id="Back" layoutX="24.0" layoutY="6.0" onAction="#Back" prefHeight="66.0" prefWidth="76.0" text=" ">
+               <graphic>
+                  <ImageView fitHeight="64.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #1976D2;">
+                     <image>
+                        <Image url="@../../other/img/Back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Label layoutX="50.0" layoutY="198.0" prefHeight="23.0" prefWidth="138.0" text="ID :" />
+      <TextField fx:id="courseID" layoutX="188.0" layoutY="197.0" prefHeight="25.0" prefWidth="242.0" promptText="ID" />
+      <Label layoutX="50.0" layoutY="246.0" prefHeight="23.0" prefWidth="138.0" text="Course Name :" />
+      <TextField fx:id="coursena" layoutX="188.0" layoutY="245.0" prefHeight="25.0" prefWidth="242.0" promptText="Course Name" />
+      <Label layoutX="50.0" layoutY="294.0" prefHeight="23.0" prefWidth="138.0" text="Duration :" />
+      <TextField fx:id="courseDur" layoutX="188.0" layoutY="293.0" prefHeight="25.0" prefWidth="242.0" promptText="Duration (HOURS)" />
+      <Label layoutX="513.0" layoutY="198.0" prefHeight="23.0" prefWidth="138.0" text="Grade : " />
+      <ComboBox fx:id="loadCombo" layoutX="651.0" layoutY="197.0" prefWidth="150.0" promptText="Select Grade" />
+      <Label layoutX="513.0" layoutY="246.0" prefHeight="23.0" prefWidth="138.0" text="Room :" />
+      <ComboBox fx:id="loadCombo1" layoutX="651.0" layoutY="245.0" prefWidth="150.0" promptText="Select Room" />
+      <Label layoutX="513.0" layoutY="294.0" prefHeight="23.0" prefWidth="138.0" text="Professor :" />
+      <ComboBox fx:id="loadCombo2" layoutX="651.0" layoutY="293.0" prefWidth="150.0" promptText="Select Professor" />
+      <JFXButton fx:id="AddCourse" buttonType="RAISED" layoutX="322.0" layoutY="524.0" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: #4F709C; -fx-padding: 10;" text="ADD" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+         <stylesheets>
+            <URL value="@css/RegStudent.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="reset" buttonType="RAISED" layoutX="465.0" layoutY="525.0" prefHeight="45.0" prefWidth="128.0" style="-fx-background-color: #4F709C; -fx-padding: 10;" text="RESET" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+         <stylesheets>
+            <URL value="@css/RegStudent.css" />
+         </stylesheets>
+      </JFXButton>
+   </children>
+</AnchorPane>

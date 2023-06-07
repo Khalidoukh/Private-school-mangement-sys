@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms.view.fxml.ManageCourse">
+   <children>
+      <Pane prefHeight="84.0" prefWidth="900.0" style="-fx-background-color: #213555;">
+         <children>
+            <Text fill="WHITE" layoutX="232.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MANAGE COURSE">
+               <font>
+                  <Font name="Georgia" size="50.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="57.0" fitWidth="56.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #1976D2;">
+               <image>
+                  <Image url="@../../other/img/Back.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <Label layoutX="260.0" layoutY="211.0" prefHeight="23.0" prefWidth="138.0" text="ID :" />
+      <TextField fx:id="CourseID" layoutX="398.0" layoutY="210.0" prefHeight="25.0" prefWidth="242.0" promptText="ID" />
+      <Label layoutX="260.0" layoutY="259.0" prefHeight="23.0" prefWidth="138.0" text="Course Name :" />
+      <TextField fx:id="Coursename" layoutX="398.0" layoutY="258.0" prefHeight="25.0" prefWidth="242.0" promptText="Course Name" />
+      <Label layoutX="260.0" layoutY="307.0" prefHeight="23.0" prefWidth="138.0" text="Duration :" />
+      <TextField fx:id="courseDuration" layoutX="398.0" layoutY="306.0" prefHeight="25.0" prefWidth="242.0" promptText="Duration (HOURS)" />
+      <JFXButton fx:id="updatec" buttonType="RAISED" layoutX="332.0" layoutY="534.0" prefHeight="46.0" prefWidth="128.0" style="-fx-background-color: #4F709C; -fx-padding: 10;" text="UPDATE" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+         <stylesheets>
+            <URL value="@css/RegStudent.css" />
+         </stylesheets>
+      </JFXButton>
+      <JFXButton fx:id="deletec" buttonType="RAISED" layoutX="475.0" layoutY="535.0" prefHeight="45.0" prefWidth="128.0" style="-fx-background-color: #4F709C; -fx-padding: 10;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+         <stylesheets>
+            <URL value="@css/RegStudent.css" />
+         </stylesheets>
+      </JFXButton>
+      <TextField fx:id="Coursd" layoutX="191.0" layoutY="124.0" prefHeight="37.0" prefWidth="153.0" promptText="Enter Course ID No" />
+      <JFXButton id="btnSearch" fx:id="searchCourse" buttonType="RAISED" layoutX="351.0" layoutY="124.0" prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #4F709C; -fx-background-radius: 5px;" stylesheets="@css/RegStudent.css" text="SEARCH" />
+      <TextField fx:id="CourseName" layoutX="475.0" layoutY="124.0" prefHeight="37.0" prefWidth="168.0" promptText="Search by Name" />
+      <JFXButton id="btnSearch" fx:id="searchCByName" buttonType="RAISED" layoutX="650.0" layoutY="124.0"  prefHeight="37.0" prefWidth="78.0" style="-fx-background-color: #4F709C; -fx-background-radius: 5px;" stylesheets="@css/RegStudent.css" text="SEARCH" />
+      <JFXButton id="button" fx:id="Back" layoutX="35.0" layoutY="21.0" onAction="#Back" text=" " />
+   </children>
+</AnchorPane>
