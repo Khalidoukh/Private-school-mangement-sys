@@ -30,6 +30,19 @@ public class GradeController {
         }
         return gradeList;
     }
+    public static ArrayList<String> getGradesId() throws ClassNotFoundException, SQLException{
+        Connection conn=DBConnection.getDBConnection().getConnection();
+        Statement stm=conn.createStatement();
+        ResultSet rst=stm.executeQuery("Select gradeId From grades");
+
+        ArrayList<String>gradeList=new ArrayList<>();
+        while(rst.next()){
+            //Grade grade;
+            //grade = new Grade(rst.getString("grade"));
+            gradeList.add(rst.getString("gradeId"));
+        }
+        return gradeList;
+    }
 
     public static ArrayList<String> getYears() throws ClassNotFoundException, SQLException{
         Connection conn=DBConnection.getDBConnection().getConnection();

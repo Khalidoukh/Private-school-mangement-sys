@@ -7,13 +7,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import sms.db.DBConnection;
+import sms.dbController.CourseController;
 import sms.dbController.GradeController;
 import sms.dbController.StudentController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import sms.model.Course;
 import sms.model.Grade;
 import sms.model.Student;
 import javafx.scene.control.TextField;
@@ -23,6 +26,7 @@ import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +35,8 @@ import java.util.logging.Logger;
 
 
 public class RegisterStudentController implements Initializable {
+    @FXML
+    private Button selectCourseButton;
     @FXML
     private TextField adNoField;
 
@@ -127,19 +133,88 @@ public class RegisterStudentController implements Initializable {
                     alert.setContentText("Student ID " + adNo + " Registered Successfully..!");
                     alert.showAndWait();
 
+                    loadCombo.setValue(null);
+
+                    // Retrieve course data from the database using SQL query
+                    List<Course> courses = CourseController.getCourses();
+
+                    // Create a new dialog
+                    Dialog<List<Course>> dialog = new Dialog<>();
+                    dialog.setTitle("Select Course");
+                    dialog.setHeaderText("Choose the courses Of this Student :");
+
+                    // Set the button types for the dialog
+                    ButtonType selectButtonType = new ButtonType("Select", ButtonBar.ButtonData.OK_DONE);
+                    dialog.getDialogPane().getButtonTypes().addAll(selectButtonType, ButtonType.CANCEL);
+
+                    // Create a GridPane to hold the checkbox choices
+                    GridPane gridPane = new GridPane();
+                    gridPane.setHgap(10);
+                    gridPane.setVgap(5);
+
+                    // Add checkbox choices for each course
+                    for (int j = 0; j < courses.size(); j++) {
+                        Course course = courses.get(j);
+                        CheckBox checkBox = new CheckBox(course.getCourse_name());
+                        gridPane.add(checkBox, 0, j);
+                    }
+
+                    // Set the content of the dialog to the GridPane
+                    dialog.getDialogPane().setContent(gridPane);
+
+                    // Convert the result to a list of selected courses when the select button is clicked
+                    dialog.setResultConverter(dialogButton -> {
+                        if (dialogButton == selectButtonType) {
+                            List<Course> selectedCourses = new ArrayList<>();
+                            gridPane.getChildren().forEach(node -> {
+                                if (node instanceof CheckBox) {
+                                    CheckBox checkBox = (CheckBox) node;
+                                    if (checkBox.isSelected()) {
+                                        Course course = courses.get(GridPane.getRowIndex(checkBox));
+                                        selectedCourses.add(course);
+                                    }
+                                }
+                            });
+                            return selectedCourses;
+                        }
+                        return null;
+                    });
+
+                    // Show the dialog and wait for the user to close it
+                    Optional<List<Course>> result = dialog.showAndWait();
+
+                    // Process the selected courses
+
+                    for (Course course : courses) {
+                        int adno;
+                        System.out.println(adNoField.getText());
+                        adno = Integer.parseInt(adNoField.getText());
+                        System.out.println(adno);
+                        int courseId = course.getCourseId();
+
+                        // Do something with the selected course
+                        System.out.println("Selected Course Of this Student: " + course.getCourseId());
+                        try {
+                            EnrollmentController.addEnrollment(courseId, adno);
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
                     adNoField.setText(null);
                     fullNameField.setText(null);
                     nameField.setText(null);
                     dobField.setText(null);
                     doaField.setText(null);
-                    loadCombo.setValue(null);
                     adNoField.setText(null);
                     parentNameField.setText(null);
                     nicField.setText(null);
                     phoneField.setText(null);
                     fullNameField.setText(null);
                     addressField.setText(null);
-
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Student Registration");
@@ -188,6 +263,9 @@ public class RegisterStudentController implements Initializable {
         }
 
     }
+
+
+
 
 }
 

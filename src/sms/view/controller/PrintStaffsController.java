@@ -26,6 +26,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -67,11 +69,6 @@ public class PrintStaffsController implements Initializable {
     @FXML
     private TableColumn<StaffTableModel, String> nicColumn;
 
-    @FXML
-    private TableColumn<StaffTableModel, String> dobColumn;
-
-    @FXML
-    private TableColumn<StaffTableModel, String> doaColumn;
 
     @FXML
     private TableColumn<StaffTableModel, String> genderColumn;
@@ -88,11 +85,6 @@ public class PrintStaffsController implements Initializable {
     @FXML
     private TableColumn<StaffTableModel, String> addressColumn;
 
-    @FXML
-    private TableColumn<StaffTableModel, String> incDateColumn;
-
-    @FXML
-    private TableColumn<StaffTableModel, String> gradeColumn;
 
     ObservableList<StaffTableModel> staffList = FXCollections.observableArrayList();
 
@@ -158,15 +150,10 @@ public class PrintStaffsController implements Initializable {
             EmpNoColumn.setCellValueFactory(new PropertyValueFactory<>("empNo"));
             NameColumn.setCellValueFactory(new PropertyValueFactory<>("teacherName"));
             nicColumn.setCellValueFactory(new PropertyValueFactory<>("nic"));
-            dobColumn.setCellValueFactory(new PropertyValueFactory<>("dob"));
-            doaColumn.setCellValueFactory(new PropertyValueFactory<>("doa"));
             emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
             genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
-            assmpDutyColumn.setCellValueFactory(new PropertyValueFactory<>("assumpOfDuties"));
             phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phone"));
             addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-            incDateColumn.setCellValueFactory(new PropertyValueFactory<>("incDate"));
-            gradeColumn.setCellValueFactory(new PropertyValueFactory<>("prsntGrade"));
 
             staffTable.setItems(staffList);
 
@@ -220,5 +207,17 @@ public class PrintStaffsController implements Initializable {
             e.printStackTrace();
         }
     }
+    public static ArrayList<String> getProf() throws ClassNotFoundException, SQLException {
+        Connection conn= DBConnection.getDBConnection().getConnection();
+        Statement stm=conn.createStatement();
+        ResultSet rst=stm.executeQuery("Select empNo From staffs");
 
+        ArrayList<String>staffList=new ArrayList<>();
+        while(rst.next()){
+            //Grade grade;
+            //grade = new Grade(rst.getString("grade"));
+            staffList.add(rst.getString("empNo"));
+        }
+        return staffList;
+    }
 }

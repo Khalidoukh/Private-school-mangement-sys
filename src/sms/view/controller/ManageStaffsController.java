@@ -145,16 +145,11 @@ public class ManageStaffsController implements Initializable {
                 empNoField.setText(null);
                 teacherNameField.setText(null);
                 nicField.setText(null);
-                dobField.setText(null);
-                doaField.setText(null);
                 emailField.setText(null);
-                asmOfDutyField.setText(null);
                 nicField.setText(null);
                 genderField.setText(null);
                 phoneField.setText(null);
                 addressField.setText(null);
-                incDateField.setText(null);
-                prsntGradeField.setText(null);
                 empName.setText(null);
                 empNoOld.setText(null);
                 EmpNo.setText(null);
@@ -191,16 +186,11 @@ public class ManageStaffsController implements Initializable {
                 empNoField.setText(null);
                 teacherNameField.setText(null);
                 nicField.setText(null);
-                dobField.setText(null);
-                doaField.setText(null);
                 emailField.setText(null);
-                asmOfDutyField.setText(null);
                 nicField.setText(null);
                 genderField.setText(null);
                 phoneField.setText(null);
                 addressField.setText(null);
-                incDateField.setText(null);
-                prsntGradeField.setText(null);
                 empName.setText(null);
                 empNoOld.setText(null);
                 EmpNo.setText(null);
@@ -237,16 +227,11 @@ public class ManageStaffsController implements Initializable {
                 empNoField.setText(null);
                 teacherNameField.setText(null);
                 nicField.setText(null);
-                dobField.setText(null);
-                doaField.setText(null);
                 emailField.setText(null);
-                asmOfDutyField.setText(null);
                 nicField.setText(null);
                 genderField.setText(null);
                 phoneField.setText(null);
                 addressField.setText(null);
-                incDateField.setText(null);
-                prsntGradeField.setText(null);
                 empName.setText(null);
                 empNoOld.setText(null);
                 EmpNo.setText(null);
@@ -263,8 +248,7 @@ public class ManageStaffsController implements Initializable {
             Staff s = new Staff(Integer.parseInt(empNoField.getText()), teacherNameField.getText(), nicField.getText(),
                     genderField.getText(), emailField.getText(),  phoneField.getText(), addressField.getText());
 
-            int moveStaff = StaffController.moveStaff(s);
-            if (moveStaff > 0) {
+
 
                 int deleteStaff = StaffController.deleteStaff(empNo);
                 if (deleteStaff > 0) {
@@ -278,16 +262,12 @@ public class ManageStaffsController implements Initializable {
                     empNoField.setText(null);
                     teacherNameField.setText(null);
                     nicField.setText(null);
-                    dobField.setText(null);
-                    doaField.setText(null);
                     emailField.setText(null);
                     genderField.setText(null);
-                    asmOfDutyField.setText(null);
                     nicField.setText(null);
                     phoneField.setText(null);
                     addressField.setText(null);
-                    incDateField.setText(null);
-                    prsntGradeField.setText(null);
+
 
 
                 } else {
@@ -297,7 +277,7 @@ public class ManageStaffsController implements Initializable {
                     alert.setContentText("There is an error deleting Staff..!");
                     alert.showAndWait();
                 }
-            }
+
         } catch(ClassNotFoundException | SQLException ex){
             Logger.getLogger(StaffController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -341,23 +321,18 @@ public class ManageStaffsController implements Initializable {
 
             ValidationController v = new ValidationController();
 
-            if(v.validateEmpty(empNoField)&& v.validateEmpty(teacherNameField)&& v.validateEmpty(nicField)&& v.validateEmpty(dobField)
-                    && v.validateEmpty(doaField)&& v.validateEmpty(phoneField)&& v.validateDate(dobField)&& v.validateDate(doaField)&& v.validateDate(asmOfDutyField)
-                    && v.validateDate(incDateField)&& v.validateNIC(nicField)&& v.validatePhone(phoneField)&& v.numbersOnly(empNoField)&& v.numbersOnly(phoneField)){
+            if(v.validateEmpty(empNoField)&& v.validateEmpty(teacherNameField)&& v.validateEmpty(nicField)
+                  && v.validateEmpty(phoneField)
+                  && v.validateNIC(nicField)&& v.validatePhone(phoneField)&& v.numbersOnly(empNoField)&& v.numbersOnly(phoneField)){
 
 
                 int empNo = Integer.parseInt(empNoField.getText());
                 String teacherName = teacherNameField.getText();
                 String nic = nicField.getText();
-                String dob = dobField.getText();
-                String doa = doaField.getText();
                 String gender = genderField.getText();
                 String email = emailField.getText();
-                String assumpOfDuties = asmOfDutyField.getText();
                 String phone = phoneField.getText();
                 String address = addressField.getText();
-                String incDate = incDateField.getText();
-                String prsntGrade = prsntGradeField.getText();
 
                 Staff s = new Staff(empNo, teacherName, nic, gender, email, phone, address);
                 int i = StaffController.updateStaff(s);
@@ -374,16 +349,13 @@ public class ManageStaffsController implements Initializable {
                     empNoField.setText(null);
                     teacherNameField.setText(null);
                     nicField.setText(null);
-                    dobField.setText(null);
-                    doaField.setText(null);
+
                     emailField.setText(null);
                     genderField.setText(null);
-                    asmOfDutyField.setText(null);
                     nicField.setText(null);
                     phoneField.setText(null);
                     addressField.setText(null);
-                    incDateField.setText(null);
-                    prsntGradeField.setText(null);
+
 
                 }
                 else if (d > 0) {
@@ -397,16 +369,11 @@ public class ManageStaffsController implements Initializable {
                     empNoField.setText(null);
                     teacherNameField.setText(null);
                     nicField.setText(null);
-                    dobField.setText(null);
-                    doaField.setText(null);
                     emailField.setText(null);
                     genderField.setText(null);
-                    asmOfDutyField.setText(null);
                     nicField.setText(null);
                     phoneField.setText(null);
                     addressField.setText(null);
-                    incDateField.setText(null);
-                    prsntGradeField.setText(null);
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

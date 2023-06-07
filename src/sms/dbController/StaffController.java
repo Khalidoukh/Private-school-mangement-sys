@@ -17,7 +17,6 @@ public class StaffController {
         stm.setObject(1, staff.getEmpNo());
         stm.setObject(2, staff.getTeacherName());
         stm.setObject(3, staff.getNic());
-
         stm.setObject(4, staff.getGender());
         stm.setObject(5, staff.getEmail());
         stm.setObject(6, staff.getPhone());
@@ -74,31 +73,14 @@ public class StaffController {
         return  stm.executeUpdate();
     }
 
-    public static int moveStaff(Staff staff)throws ClassNotFoundException,SQLException {
-        String SQL="INSERT INTO oldstaffs VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-        Connection conn = DBConnection.getDBConnection().getConnection();
-        PreparedStatement stm = conn.prepareStatement(SQL);
-        stm.setObject(1, staff.getEmpNo());
-        stm.setObject(2, staff.getTeacherName());
-        stm.setObject(3, staff.getNic());
-
-        stm.setObject(4, staff.getGender());
-        stm.setObject(5, staff.getEmail());
-        stm.setObject(6, staff.getPhone());
-        stm.setObject(7, staff.getAddress());
-
-
-        return  stm.executeUpdate();
-    }
 
     public static int updateStaff(Staff staff) throws ClassNotFoundException, SQLException {
-        String sql = "UPDATE staffs SET empNo= ? ,teacherName= ? ,nic= ? ,dob= ? ,doa= ? ,gender= ? ,email=? ,assumpOfDuties= ? ,phone= ? ,address= ? ,incDate=? ,prsntGrade=? WHERE empNo= '" +staff.getEmpNo()+ "'";
+        String sql = "UPDATE staffs SET empNo= ? ,teacherName= ? ,nic= ?,gender= ? ,email=?,phone= ? ,address= ?  WHERE empNo= '" +staff.getEmpNo()+ "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, staff.getEmpNo());
         stm.setObject(2, staff.getTeacherName());
         stm.setObject(3, staff.getNic());
-
         stm.setObject(4, staff.getGender());
         stm.setObject(5, staff.getEmail());
         stm.setObject(6, staff.getPhone());
@@ -109,7 +91,7 @@ public class StaffController {
     }
 
     public static int updateOldStaff(Staff staff) throws ClassNotFoundException, SQLException {
-        String sql = "UPDATE staffs SET empNo= ? ,teacherName= ? ,nic= ? ,dob= ? ,doa= ? ,gender= ? ,email=? ,assumpOfDuties= ? ,phone= ? ,address= ? ,incDate=? ,prsntGrade=? WHERE empNo= '" +staff.getEmpNo()+ "'";
+        String sql = "UPDATE staffs SET empNo= ? ,teacherName= ? ,nic= ?,gender= ? ,email=?  ,phone= ? ,address= ?  WHERE empNo= '" +staff.getEmpNo()+ "'";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, staff.getEmpNo());

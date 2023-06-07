@@ -58,6 +58,8 @@ public class MainDashboardController implements Initializable{
         @FXML
         private JFXButton btnUserSettings;
 
+
+
 //        @FXML
 //        private TextField username;
 
@@ -92,6 +94,28 @@ public class MainDashboardController implements Initializable{
 
                 try {
                         AnchorPane user = FXMLLoader.load(getClass().getResource(("/sms/view/fxml/StudentManagement.fxml")));
+                        root.getChildren().setAll(user);
+                }catch(IOException e){
+                        System.out.println(e);
+                }
+
+                /*try {
+                        Parent root = FXMLLoader.load(getClass().getResource("/sms/view/fxml/StudentManagement.fxml"));
+                        Stage stage = new Stage();
+                        stage.setTitle("Student Management");
+                        stage.setScene(new Scene(root));
+                        stage.getIcons().add(new Image(getClass().getResourceAsStream("/sms/other/img/HikmaLogo.jpg")));
+                        stage.show();
+
+                }catch(IOException e){
+                        System.out.println(e);
+                }*/
+        }
+        @FXML
+        void setBtnLibraryMgmt(ActionEvent event) {
+
+                try {
+                        AnchorPane user = FXMLLoader.load(getClass().getResource(("/sms/view/fxml/CourseManagment.fxml")));
                         root.getChildren().setAll(user);
                 }catch(IOException e){
                         System.out.println(e);
@@ -166,11 +190,13 @@ public class MainDashboardController implements Initializable{
         @FXML
         void btnLibraryMgmt(ActionEvent event) {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("School Management System");
-                alert.setHeaderText(null);
-                alert.setContentText("Sorry..! This feature currently Unavailable for this Version.");
-                alert.showAndWait();
+
+                try {
+                        AnchorPane user = FXMLLoader.load(getClass().getResource(("/sms/view/fxml/CourseManagment.fxml")));
+                        root.getChildren().setAll(user);
+                }catch(IOException e){
+                        System.out.println(e);
+                }
         }
 
         @FXML

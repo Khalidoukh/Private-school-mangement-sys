@@ -1,9 +1,6 @@
 package sms.model;
 
-/**
- * @author Safnaj on 8/29/2018
- * @project School Management System
- **/
+
 public class Grade {
 
     private int gradeID;
