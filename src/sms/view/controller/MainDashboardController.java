@@ -89,7 +89,7 @@ public class MainDashboardController implements Initializable{
                 }
         }
 
-        @FXML
+                @FXML
         void setBtnStudentMgmt(ActionEvent event) {
 
                 try {
@@ -160,21 +160,29 @@ public class MainDashboardController implements Initializable{
         @FXML
         void btnEventMgmt(ActionEvent event) {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("School Management System");
-                alert.setHeaderText(null);
-                alert.setContentText("Sorry..! This feature currently Unavailable for this Version.");
-                alert.showAndWait();
+
+                try {
+                        AnchorPane eventManagement = FXMLLoader.load(getClass().getResource("/sms/view/fxml/SchedulesTime.fxml"));
+                        root.getChildren().setAll(eventManagement);
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Error loading Event Management");
+                        alert.showAndWait();
+                }
         }
 
         @FXML
         void btnExamMgmt(ActionEvent event) {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("School Management System");
-                alert.setHeaderText(null);
-                alert.setContentText("Sorry..! This feature currently Unavailable for this Version.");
-                alert.showAndWait();
+                try {
+                        AnchorPane user = FXMLLoader.load(getClass().getResource(("/sms/view/fxml/SchedulesTime.fxml")));
+                        root.getChildren().setAll(user);
+                }catch(IOException e){
+                        System.out.println(e);
+                }
         }
 
         @FXML

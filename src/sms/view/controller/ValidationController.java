@@ -20,14 +20,14 @@ public class ValidationController {
     }
 
     public boolean validateNIC(TextField txt) {
-        if ((txt.getText().isEmpty())) {
+        if (txt.getText().matches("^(\\d{9}|\\d{12})[VvXx]$")|| (txt.getText().isEmpty())) {
 
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Student Registration");
             alert.setHeaderText(null);
-            alert.setContentText("Invalid ID CARD  Number..!");
+            alert.setContentText("Invalid NIC Number..!");
             alert.showAndWait();
 
             return false;

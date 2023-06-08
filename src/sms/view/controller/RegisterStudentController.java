@@ -134,7 +134,15 @@ public class RegisterStudentController implements Initializable {
                     alert.showAndWait();
 
                     loadCombo.setValue(null);
-
+                    fullNameField.setText(null);
+                    nameField.setText(null);
+                    dobField.setText(null);
+                    doaField.setText(null);
+                    parentNameField.setText(null);
+                    nicField.setText(null);
+                    phoneField.setText(null);
+                    fullNameField.setText(null);
+                    addressField.setText(null);
                     // Retrieve course data from the database using SQL query
                     List<Course> courses = CourseController.getCourses();
 
@@ -194,8 +202,10 @@ public class RegisterStudentController implements Initializable {
 
                         // Do something with the selected course
                         System.out.println("Selected Course Of this Student: " + course.getCourseId());
+
                         try {
                             EnrollmentController.addEnrollment(courseId, adno);
+
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         } catch (SQLException e) {
@@ -204,17 +214,7 @@ public class RegisterStudentController implements Initializable {
 
                     }
 
-                    adNoField.setText(null);
-                    fullNameField.setText(null);
-                    nameField.setText(null);
-                    dobField.setText(null);
-                    doaField.setText(null);
-                    adNoField.setText(null);
-                    parentNameField.setText(null);
-                    nicField.setText(null);
-                    phoneField.setText(null);
-                    fullNameField.setText(null);
-                    addressField.setText(null);
+
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Student Registration");

@@ -2,10 +2,9 @@ package sms.dbController;
 
 import sms.db.DBConnection;
 import sms.model.Staff;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 
 public class StaffController {
@@ -105,5 +104,17 @@ public class StaffController {
 
 
         return  stm.executeUpdate();
+    }
+    public static ArrayList<String> getstaff() throws ClassNotFoundException, SQLException{
+        Connection conn=DBConnection.getDBConnection().getConnection();
+        Statement stm=conn.createStatement();
+        ResultSet rst=stm.executeQuery("Select distinct teacherName from staffs");
+
+        ArrayList<String>stafflist=new ArrayList<>();
+        while(rst.next()){
+            stafflist.add(rst.getString("teacherName"));
+
+        }
+        return stafflist;
     }
 }

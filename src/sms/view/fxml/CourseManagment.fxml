@@ -20,28 +20,44 @@
             </Text>
          </children>
       </Pane>
-      <JFXButton fx:id="btnCourseAdd" buttonType="RAISED" onAction="#SetBtnCourseAdd" layoutX="179.0" layoutY="381.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #4F709C;" stylesheets="@css/RegStudent.css" text="ADD Course" textFill="WHITE">
+      <JFXButton fx:id="btnCourseAdd" buttonType="RAISED" layoutX="179.0" layoutY="381.0" onAction="#SetBtnCourseAdd" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #4F709C;" stylesheets="@css/RegStudent.css" text="ADD Course" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnCourseList" onAction="#SetBtnCourseList" buttonType="RAISED" layoutX="571.0" layoutY="381.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #4F709C;" stylesheets="@css/RegStudent.css" text="Course List" textFill="WHITE">
+      <JFXButton fx:id="btnCourseList" buttonType="RAISED" layoutX="571.0" layoutY="381.0" onAction="#SetBtnCourseList" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #4F709C;" stylesheets="@css/RegStudent.css" text="Course List" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btnCourseMng" buttonType="RAISED" onAction="#SetBtnCourseMgment" layoutX="374.0" layoutY="381.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #4F709C;" stylesheets="@css/RegStudent.css" text="Manage Course" textFill="WHITE">
+      <JFXButton fx:id="btnCourseMng" buttonType="RAISED" layoutX="374.0" layoutY="381.0" onAction="#SetBtnCourseMgment" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: #4F709C;" stylesheets="@css/RegStudent.css" text="Manage Course" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton id="button" fx:id="Back" layoutX="54.0" layoutY="29.0" onAction="#Back" style="-fx-background-color: #213555;" text=" ">
+      <JFXButton id="button" fx:id="Back" onAction="#Back" style="-fx-background-color: #213555;" text=" ">
          <graphic>
             <ImageView fitHeight="48.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #1976D2;">
                <image>
                   <Image url="@../../other/img/Back.png" />
                </image>
             </ImageView>
-         </graphic></JFXButton>
+         </graphic>
+      </JFXButton>
+      <ImageView fitHeight="128.0" fitWidth="137.0" layoutX="186.0" layoutY="236.0">
+         <image>
+            <Image url="@../../other/img/livre.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="137.0" layoutX="382.0" layoutY="236.0">
+         <image>
+            <Image url="@../../other/img/cours.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="127.0" layoutX="583.0" layoutY="236.0">
+         <image>
+            <Image url="@../../other/img/tache-terminee.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

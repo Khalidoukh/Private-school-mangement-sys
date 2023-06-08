@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms.view.controller.SchoolInfoController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sms.view.controller.SchoolInfoController">
     <children>
         <Label layoutX="40.0" layoutY="160.0" prefHeight="23.0" prefWidth="138.0" text="Name of School :" />
         <TextField fx:id="SchoolNameField" layoutX="178.0" layoutY="159.0" prefHeight="25.0" prefWidth="242.0" promptText="Name of School" />
@@ -56,11 +56,13 @@
             <URL value="@css/RegStudent.css" />
          </stylesheets>
       </JFXButton>
-      <JFXButton id="button" fx:id="Back" layoutX="26.0" layoutY="1.0" onAction="#Back" text=" " />
-      <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="45.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #1976D2;">
-         <image>
-            <Image url="@../../other/img/Back.png" />
-         </image>
-      </ImageView>
+      <JFXButton id="button" fx:id="Back" layoutX="26.0" layoutY="1.0" onAction="#Back" text=" ">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #1976D2;">
+               <image>
+                  <Image url="@../../other/img/Back.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
     </children>
 </AnchorPane>

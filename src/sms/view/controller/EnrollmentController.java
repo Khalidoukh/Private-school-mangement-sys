@@ -22,14 +22,8 @@ public class EnrollmentController {
             statement.setInt(2, studentId);
             // Execute the query
             statement.executeUpdate();
-        } finally {
-            // Close the statement and connection
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+        } catch (SQLException e) {
+
         }
     }
 }

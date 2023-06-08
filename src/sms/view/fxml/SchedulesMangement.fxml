@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sms.view.controller.SchedulesMangementController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label text="Create Schedule" layoutX="20.0" layoutY="20.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <VBox layoutX="20.0" layoutY="60.0" spacing="10">
+            <HBox spacing="10">
+                <Label text="Schedule ID:" />
+                <TextField fx:id="scheduleIdField" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Course ID:" />
+                <ComboBox fx:id="courseIdComboBox" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Teacher ID:" />
+                <ComboBox fx:id="teacherIdComboBox" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Room ID:" />
+                <ComboBox fx:id="roomIdComboBox" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Day:" />
+                <TextField fx:id="dayField" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="Start Time:" />
+                <TextField fx:id="startTimeField" />
+            </HBox>
+
+            <HBox spacing="10">
+                <Label text="End Time:" />
+                <TextField fx:id="endTimeField" />
+            </HBox>
+        </VBox>
+
+        <Button text="Create" layoutX="20.0" layoutY="340.0"  />
+
+        <Button text="Back" layoutX="90.0" layoutY="340.0" />
+    </children>
+
+
+</AnchorPane>

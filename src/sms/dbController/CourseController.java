@@ -6,10 +6,7 @@ import sms.model.Course;
 import sms.model.Staff;
 import sms.model.Student;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,6 +91,18 @@ public class CourseController {
             return c;
         }
         return null;
+    }
+    public static ArrayList<String> getCourseName() throws ClassNotFoundException, SQLException{
+        Connection conn=DBConnection.getDBConnection().getConnection();
+        Statement stm=conn.createStatement();
+        ResultSet rst=stm.executeQuery("Select course_name  from course");
+
+        ArrayList<String>stafflist=new ArrayList<>();
+        while(rst.next()){
+            stafflist.add(rst.getString("course_name"));
+
+        }
+        return stafflist;
     }
 
 }

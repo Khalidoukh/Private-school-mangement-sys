@@ -21,7 +21,7 @@
             </Text>
          </children>
       </Pane>
-      <JFXButton fx:id="generate" onAction="#generate" layoutX="405.0" layoutY="108.0" prefHeight="0.0" prefWidth="109.0" style="-fx-background-color: #4F709C; -fx-background-radius: 10;" text="Generate" textFill="WHITE">
+      <JFXButton fx:id="generate" layoutX="405.0" layoutY="108.0" onAction="#generate" prefHeight="0.0" prefWidth="109.0" style="-fx-background-color: #4F709C; -fx-background-radius: 10;" text="Generate" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

@@ -72,8 +72,8 @@ public class PrintCourse implements Initializable {
     @FXML
     void generate() {
 
-        try{
-            CourseTable.getItems().clear();
+        try{            CourseTable.getItems().clear();
+
 
             Connection conn = DBConnection.getDBConnection().getConnection();
 

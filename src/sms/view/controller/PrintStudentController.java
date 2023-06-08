@@ -24,6 +24,8 @@ import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import sms.dbController.CourseController;
+import sms.dbController.StaffController;
 import sms.main.StartProject;
 import sms.tableModel.StudentTableModel;
 import sms.db.DBConnection;
@@ -87,13 +89,14 @@ public class PrintStudentController implements Initializable {
     private ComboBox<String> loadGrades;
 
     @FXML
-    private ComboBox<String> loadYears;
+    private ComboBox<String> loadCourseName;
 
     @FXML
     private ComboBox<String> loadGender;
 
     @FXML
     private JFXButton generate;
+
 
     @FXML
     private JFXButton printStudents;
@@ -149,7 +152,7 @@ public class PrintStudentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadGrades();
-        loadYears();
+        loadcourse();
         loadGender.getItems().addAll("All", "Male", "Female");
     }
 
@@ -176,10 +179,10 @@ public class PrintStudentController implements Initializable {
 
 
     @FXML
-    void loadYears() {
+    void loadcourse() {
         ArrayList arrayList = null;
         try {
-            arrayList = GradeController.getYears();
+            arrayList =  CourseController.getCourseName();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -187,7 +190,7 @@ public class PrintStudentController implements Initializable {
         observableArray.addAll(arrayList);
 
         if (observableArray != null) {
-            loadYears.setItems(observableArray);
+            loadCourseName.setItems(observableArray);
         }
     }
 
@@ -198,13 +201,13 @@ public class PrintStudentController implements Initializable {
             studentTable.getItems().clear();
             String grade = loadGrades.getValue();
             String gender = loadGender.getValue();
-            String year = loadYears.getValue();
+            String courseName =loadCourseName.getValue();
 
             Connection conn = DBConnection.getDBConnection().getConnection();
 
             // if((loadGrades != null)&&(loadGender != null)){
 
-            if (gender == "All") {
+            if (gender == "All" && grade == null && courseName == null) {
 
                 String sql = "select * from students where grade = '" + grade + "'";
                 ResultSet rs = conn.createStatement().executeQuery(sql);
@@ -215,7 +218,7 @@ public class PrintStudentController implements Initializable {
                             rs.getString("nic"), rs.getString("phone"), rs.getString("address"));
                     studentList.add(s);
                 }
-            } else {
+            } else if (gender == "All" && grade != null && courseName == null){
                 String sql2 = "select * from students where grade = '" + grade + "' AND gender = '" + gender + "'";
                 ResultSet rs = conn.createStatement().executeQuery(sql2);
 
@@ -225,14 +228,25 @@ public class PrintStudentController implements Initializable {
                             rs.getString("nic"), rs.getString("phone"), rs.getString("address"));
                     studentList.add(s);
                 }
-            }
 
-            if (loadGrades != null) {
+            }
+            else if (gender == "All" && grade != null && courseName != null){
+                String sql2 =  "SELECT s.* FROM students s JOIN enrollment e ON s.adNo = e.student_id JOIN course c ON c.courseId = e.course_id WHERE c.course_name = '" + courseName + "'";
+                ResultSet rs = conn.createStatement().executeQuery(sql2);
+
+                while (rs.next()) {
+                    StudentTableModel s = new StudentTableModel(rs.getInt("adNo"), rs.getString("fullName"), rs.getString("name"),
+                            rs.getString("dob"), rs.getString("doa"), rs.getString("gender"), rs.getString("grade"), rs.getString("parentName"),
+                            rs.getString("nic"), rs.getString("phone"), rs.getString("address"));
+                    studentList.add(s);
+                }
+
+            }            if (loadGrades != null) {
 
                 // studentTable.getItems().clear();
 
                 if (gender == "All") {
-                    String sql = "select * from paststudents where year = '" + year + "'";
+                    String sql = "select * from paststudents where year = '" + courseName + "'";
                     ResultSet rs = conn.createStatement().executeQuery(sql);
 
                     while (rs.next()) {
@@ -242,12 +256,12 @@ public class PrintStudentController implements Initializable {
                         studentList.add(s);
                     }
                 } else {
-                    String sql2 = "select * from paststudents where year = '" + year + "' AND gender = '" + gender + "'";
+                    String sql2 = "SELECT s.* FROM students s JOIN enrollment e ON s.adNo = e.student_id JOIN course c ON c.courseId = e.course_id WHERE c.course_name = '" + courseName + "'";
                     ResultSet rs = conn.createStatement().executeQuery(sql2);
 
                     while (rs.next()) {
                         StudentTableModel s = new StudentTableModel(rs.getInt("adNo"), rs.getString("fullName"), rs.getString("name"),
-                                rs.getString("dob"), rs.getString("doa"), rs.getString("gender"), rs.getString("year"), rs.getString("parentName"),
+                                rs.getString("dob"), rs.getString("doa"), rs.getString("gender"), rs.getString("grade"), rs.getString("parentName"),
                                 rs.getString("nic"), rs.getString("phone"), rs.getString("address"));
                         studentList.add(s);
                     }
@@ -294,7 +308,7 @@ public class PrintStudentController implements Initializable {
             studentTable.getItems().clear();
             String grade = loadGrades.getValue();
             String gender = loadGender.getValue();
-            String year = loadYears.getValue();
+            String year = loadCourseName.getValue();
 
             Connection conn = DBConnection.getDBConnection().getConnection();
             InputStream report1 = getClass().getResourceAsStream("/sms/Reports/StudentList.jrxml");
@@ -309,7 +323,7 @@ public class PrintStudentController implements Initializable {
             */
             JRDesignQuery query = new JRDesignQuery();
 
-            if(loadYears.getValue()==null) {
+            if(loadCourseName.getValue()==null) {
 
                 if (loadGrades != null) {
 
@@ -330,7 +344,7 @@ public class PrintStudentController implements Initializable {
                     }
                 }
             }
-            if (loadYears.getValue() != null) {
+            if (loadCourseName.getValue() != null) {
 
                 if (gender == "All") {
 
